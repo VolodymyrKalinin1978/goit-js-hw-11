@@ -6,6 +6,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
+
 const fetchImagesService = new FetchImagesService();
 const loadMoreBtn = new LoadMoreBtn({ selektor: '.load-more', hidden: true });
 const lightbox = new SimpleLightbox('.gallery a', { captionDelay: 250 });
