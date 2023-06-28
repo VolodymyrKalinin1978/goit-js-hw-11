@@ -6,7 +6,6 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-
 const fetchImagesService = new FetchImagesService();
 const loadMoreBtn = new LoadMoreBtn({ selektor: '.load-more', hidden: true });
 const lightbox = new SimpleLightbox('.gallery a', { captionDelay: 250 });
@@ -21,7 +20,7 @@ function onSearch(e) {
   if (currentWord === '') {
     return Notify.info(`Enter a word to search for images.`);
   }
-  
+
   fetchImagesService.searchQuery = currentWord;
   // loadMoreBtn.show();
   fetchImagesService.resetPage();
@@ -51,21 +50,24 @@ async function fetchImages() {
     if (refs.containerDiv.children.length < 40) {
       Notify.success(`Hooray! We found ${totalHits} images.`);
     }
-     loadMoreBtn.show();
+    loadMoreBtn.show();
     appendImagesMarkup(data);
     onPageScrolling();
     lightbox.refresh();
 
-    if (refs.containerDiv.children.length >= totalHits && fetchImagesService.page > 2) {
+    if (
+      refs.containerDiv.children.length >= totalHits &&
+      fetchImagesService.page > 2
+    ) {
       Notify.info(`We're sorry, but you've reached the end of search results.`);
       loadMoreBtn.hide();
-    } 
-    if ( totalHits <= 40) {
-      loadMoreBtn.hide();
+    }
+    if (totalHits <= 40) {
+      return loadMoreBtn.hide();
     }
     loadMoreBtn.enable();
   } catch (error) {
-    console.log(error.code);
+    alert(console.log(error.code));
   }
 }
 
