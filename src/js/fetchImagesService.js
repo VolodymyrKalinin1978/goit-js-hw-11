@@ -3,7 +3,7 @@ import axios from 'axios';
 // Прийом данних з бекенду
 export class FetchImagesService {
   #BASE_URL = 'https://pixabay.com/api';
-  #API_KEY = '37818946-33cd2e224c2745fff2bf03505';
+  #API_KEY = '26715029-67e5620fa98d677e725f7569f';
 
   constructor() {
     this.searchQuery = '';
