@@ -67,7 +67,7 @@ async function fetchImages() {
     }
     loadMoreBtn.enable();
   } catch (error) {
-    alert(console.log(error.code));
+    alert(error.code);
   }
 }
 
